@@ -1,0 +1,17 @@
+/* src/main/resources/static/css/styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+/* Add more styles as needed */

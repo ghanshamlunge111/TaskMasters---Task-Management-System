@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>TaskMaster</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/task_detail_styles.css" th:href="@{/css/task_detail_styles.css}">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">TaskMaster - Task Management System</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<!--<a class="nav-link" th:href="@{/tasks}">Task List</a>-->
+					<a class="nav-link" th:href="@{/tasks}"> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks/createNew}"> Create New Task</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br />
+	<div class="container">
+		<div class="row">
+			<h1>Tasks Details</h1>
+		</div>
+		<br />
+		<div th:if="${task}">
+			<p><strong>Task ID:</strong> <span th:text="${task.taskId}"></span></p>
+			<p><strong>Task Type:</strong> <span th:text="${task.taskType}"></span></p>
+			<p><strong>Reported By:</strong> <span th:text="${task.reportedBy}"></span></p>
+			<p><strong>Assignee:</strong> <span th:text="${task.assignedTo}"></span></p>
+			<p><strong>Status:</strong> <span th:text="${task.status}"></span></p>
+			<p><strong>Comments:</strong> <span th:text="${task.comments}"></span></p>
+			<p><strong>Reported On:</strong> <span th:text="${task.reportedOn}"></span></p>
+			<p><strong>Resolved On:</strong> <span
+					th:text="${task.resolvedOn != null ? task.resolvedOn : 'Not Resolved'}"></span></p>
+		</div>
+		<div th:unless="${task}">
+			<p>Task not found!</p>
+		</div>
+</body>
+
+</html>

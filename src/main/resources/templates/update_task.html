@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Edit Task</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="/css/new_task_styles.css" th:href="@{/css/new_task_styles.css}">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<!-- Brand -->
+		<a class="navbar-brand" href="#">TaskMaster - Task Management System</a>
+
+		<!-- Toggler/collapsibe Button -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<!-- Navbar links -->
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks}"> Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" th:href="@{/tasks/createNew}"> Create New Task</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<br />
+	<div>
+		<h1>Update Task</h1>
+	</div>
+	<br />
+	<div>
+		<form th:action="@{/tasks/{taskId}/update(taskId=${task.taskId})}" th:object="${task}" method="post">
+
+			<label class="col-md-2">Task ID:</label>
+			<span th:text="${task.taskId}"></span>
+			<br />
+
+			<label class="col-md-2" for="TaskType">Task Type:</label>
+			<input id="taskType" name="taskType" th:field="*{taskType}" required></input>
+			<br />
+
+			<label class="col-md-2" for="ReportedBy">Reported By:</label>
+			<input type="text" id="reportedBy" name="reportedBy" th:field="*{reportedBy}" required />
+			<br />
+
+			<label class="col-md-2" for="AssignedTo">Assigned To:</label>
+			<input type="text" id="assignedTo" name="assignedTo" th:field="*{assignedTo}" />
+			<br />
+
+			<label class="col-md-2" for="Status">Status:</label>
+			<input type="text" id="status" name="status" th:field="*{status}" required />
+			<br />
+
+			<label class="col-md-2" for="Comments">Comments:</label>
+			<input type="text" id="comments" name="comments" th:field="*{comments}" />
+			<br />
+
+			<label class="col-md-2" for="ReportedOn">Reported On:</label>
+			<input type="date" id="reportedOn" name="reportedOn" th:field="*{reportedOn}" required />
+			<br />
+
+			<label class="col-md-2" for="ResolvedOn">Resolved On:</label>
+			<input type="date" id="resolvedOn" name="resolvedOn" th:field="*{resolvedOn}" />
+			<br />
+
+			<button class="col-md-2" type="submit">Update Task</button>
+		</form>
+	</div>
+</body>
+
+</html>
